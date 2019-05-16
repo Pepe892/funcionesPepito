@@ -21,16 +21,6 @@ def Make_Quantiles(dataframe, n_divisions, variable_name, defaultname='FLAG_MALO
     x.loc[:,variable_name+'_quant'] = np.select([ x[variable_name]>percentile_ant[0] ], [1],0)
     x.loc[:,variable_name+'_corte'] = np.select([ x[variable_name]>percentile_ant[0] ], 
                                                 ['%.2f - %.2f'%(percentile_ant[0], percentile[0])], '<=%.2f'%percentile_ant[0])
-    
-#    for i in range(n_divisions-3):
-#        percentile_ant = percentile
-#        percentile = x[[variable_name]].quantile(percent*(i+3))
-#        x.loc[ ( x[variable_name]>(percentile_ant[0]) ), variable_name+'_quant'] = 2+i
-#        x.loc[ ( x[variable_name]>(percentile_ant[0]) ), variable_name+'_corte'] = '%.2f - %.2f'%(percentile_ant[0], percentile[0])
-    
-#    percentile_ant = percentile
-#    x.loc[ ( x[variable_name]>(percentile_ant[0]) ), variable_name+'_quant'] = n_divisions-1
-#    x.loc[ ( x[variable_name]>(percentile_ant[0]) ), variable_name+'_corte'] = '>%.2f'%(percentile_ant[0])
 
     for i in range(n_divisions-3):
         percentile_ant = percentile
